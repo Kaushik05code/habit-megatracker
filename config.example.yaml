@@ -1,0 +1,124 @@
+# MegaTracker configuration (generic sample profile).
+# Copy to config.yaml (git-ignored) and edit. Keys you leave out fall back to this file.
+
+profile:
+  name: Alex
+  sex: Male            # Male or Female (sets the Mifflin-St Jeor constant)
+  age: 25
+  height_cm: 175
+  start_weight_kg: 70  # used until BODY_LOG has a weigh-in
+  body_fat_pct: 15
+
+goals:
+  goal_text: "Lean bulk: +2 kg, mostly muscle, in 3 months"
+  target_weight_kg: 72
+  timeline_months: 3
+  protein_g_per_kg: 2.0
+  fat_pct_of_calories: 25
+  calorie_surplus_kcal: 250   # negative for a cut
+  weekly_change_min_kg: 0.15  # DASHBOARD shows ON TRACK between min and max
+  weekly_change_max_kg: 0.30
+  kcal_per_kg: 7700
+
+training:
+  default_activity_level: Moderate
+  sport_name: Football
+  sport_day_bonus_kcal: 500   # added to TDEE on SCENARIOS when "sport day" = Yes
+  schedule: {Mon: Gym, Tue: Gym, Wed: Football, Thu: Gym, Fri: Gym, Sat: Football, Sun: Rest}
+  session_activity_level: {Gym: Moderate, Football: High, Rest: Light}
+
+activity_levels:   # [level, factor, description]
+  - [Sedentary, 1.2, "Desk work, no exercise"]
+  - [Light, 1.375, "Occasional light exercise"]
+  - [Moderate, 1.55, "Gym 3-5x/week"]
+  - [High, 1.7, "Gym + frequent sport"]
+  - [Very High, 1.9, "Hard daily training / manual labour"]
+
+habits:
+  custom_habit: Read_20_Pages   # the 1/0 column on HABITS (letters, digits, underscores)
+  screen_time_max_hrs: 3.0
+  sleep_min_hrs: 7.5
+  water_min_l: 3.0
+  deep_work_min_hrs: 2.0
+
+rda:   # [nutrient, unit, daily target]
+  - [Vitamin D, IU, 600]
+  - [Calcium, mg, 1000]
+  - [Magnesium, mg, 400]
+  - [Iron, mg, 8]
+  - [Vitamin B12, mcg, 2.4]
+  - [Omega-3, mg, 1600]
+
+# [Food_ID, Food_Name, Category, Unit_Type, Unit_Grams, Calories, Protein_g, Carbs_g, Fat_g, Fibre_g,
+#  Calcium_mg, VitaminD_IU, Magnesium_mg, Iron_mg, VitB12_mcg, Omega3_mg]
+# Unit_Type: per_100g | per_100ml | per_unit (values are per Unit_Grams)
+foods:
+  - [EGG, "Whole egg (large)", Protein, per_unit, 50, 72, 6.3, 0.4, 4.8, 0, 27, 41, 6, 0.9, 0.56, 37]
+  - [CHICKEN_BREAST, "Chicken breast, cooked", Protein, per_100g, 100, 165, 31, 0, 3.6, 0, 15, 5, 29, 1.0, 0.3, 30]
+  - [SALMON, "Salmon, cooked", Protein, per_100g, 100, 206, 22.1, 0, 12.4, 0, 15, 450, 30, 0.3, 3.2, 2150]
+  - [RICE_COOKED, "White rice, cooked", Carb, per_100g, 100, 135, 2.7, 30, 0.3, 0.4, 10, 0, 12, 0.2, 0, 0]
+  - [OATS_ROLLED, "Rolled oats, dry", Carb, per_100g, 100, 389, 16.9, 66.3, 6.9, 10.6, 54, 0, 177, 4.7, 0, 0]
+  - [ROTI, "Whole-wheat flatbread (~40 g)", Carb, per_unit, 40, 120, 3.1, 18, 3.7, 2, 10, 0, 18, 1.1, 0, 0]
+  - [MILK_WHOLE, "Whole milk 3.25%", Dairy, per_100ml, 100, 62, 3.3, 4.7, 3.35, 0, 119, 40, 11, 0.03, 0.45, 0]
+  - [GREEK_YOGURT, "High-protein yogurt cup (140 g)", Dairy, per_unit, 140, 97, 15, 9, 0.1, 0, 252, 0, 15, 0.2, 0.35, 0]
+  - [PEANUT_BUTTER, "Peanut butter", Fat, per_100g, 100, 588, 25, 20, 50, 6, 43, 0, 154, 1.9, 0, 0]
+  - [TRAIL_MIX, "Mixed nuts & raisins", Snack, per_100g, 100, 481, 14.2, 31.5, 34.1, 4, 55, 0, 110, 2.2, 0, 0]
+  - [MIX_VEG, "Mixed vegetables, cooked", Vegetable, per_100g, 100, 64, 3.3, 13.5, 0.5, 3, 25, 0, 18, 0.8, 0, 0]
+  - [BANANA, "Banana, raw", Fruit, per_100g, 100, 89, 1.1, 22.8, 0.3, 2.6, 5, 0, 27, 0.26, 0, 0]
+  - [MIX_BERRIES, "Mixed berries", Fruit, per_100g, 100, 50, 1, 12, 0.4, 2, 15, 0, 6, 0.4, 0, 0]
+  - [WHEY_SCOOP, "Whey protein, 1 scoop", Supplement, per_unit, 35, 140, 25, 5.4, 1.9, 0, 100, 0, 0, 0, 0, 0]
+  - [WATER, "Plain water", Drink, per_100ml, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+# [Supp_ID, Name, Brand, Default_Dose, Dose_Units, Cal_per_Dose, VitD_IU, Calcium_mg, Magnesium_mg,
+#  Iron_mg, VitB12_mcg, Omega3_mg, Creatine_g]
+supplements:
+  - [CREATINE, Creatine monohydrate, Generic, "1 scoop (5 g)", g, 0, 0, 0, 0, 0, 0, 0, 5]
+  - [VITD3, Vitamin D3, Generic, 1 capsule, IU, 0, 2000, 0, 0, 0, 0, 0, 0]
+  - [FISH_OIL, "Fish oil (EPA+DHA)", Generic, 2 capsules, mg, 18, 0, 0, 0, 0, 0, 1000, 0]
+  - [MULTI, Multivitamin, Generic, 1 tablet, tab, 5, 400, 200, 50, 8, 2.4, 0, 0]
+  - [MAGNESIUM, Magnesium glycinate, Generic, 1 capsule, mg, 0, 0, 0, 200, 0, 0, 0, 0]
+
+# A typical day. Sample data repeats it with small variations.
+template_day:
+  - {meal: Breakfast, time: "08:00", food: OATS_ROLLED, amount: 80, note: Oats}
+  - {meal: Breakfast, time: "08:00", food: MILK_WHOLE, amount: 300, note: Milk}
+  - {meal: Breakfast, time: "08:00", food: BANANA, amount: 120, note: 1 banana}
+  - {meal: Breakfast, time: "08:00", food: PEANUT_BUTTER, amount: 20, note: 1 tbsp}
+  - {meal: Lunch, time: "13:00", food: CHICKEN_BREAST, amount: 130, note: Chicken}
+  - {meal: Lunch, time: "13:00", food: RICE_COOKED, amount: 250, note: Rice}
+  - {meal: Lunch, time: "13:00", food: MIX_VEG, amount: 150, note: Veg}
+  - {meal: Snack, time: "16:00", food: GREEK_YOGURT, amount: 140, note: Yogurt cup}
+  - {meal: Snack, time: "16:00", food: MIX_BERRIES, amount: 80, note: Berries}
+  - {meal: Snack, time: "16:00", food: TRAIL_MIX, amount: 30, note: Nuts & raisins}
+  - {meal: Post-Workout, time: "19:30", food: WHEY_SCOOP, amount: 35, note: 1 scoop}
+  - {meal: Post-Workout, time: "19:30", food: MILK_WHOLE, amount: 250, note: Shake milk}
+  - {meal: Dinner, time: "21:00", food: SALMON, amount: 130, note: Protein of the day, rotate: [SALMON, CHICKEN_BREAST, EGG]}
+  - {meal: Dinner, time: "21:00", food: RICE_COOKED, amount: 200, note: Rice}
+  - {meal: Dinner, time: "21:00", food: MIX_VEG, amount: 150, note: Veg}
+  - {meal: Late Snack, time: "22:30", food: BANANA, amount: 120, note: Optional, optional: true}
+
+# SCENARIOS what-if sandbox: [label, Food_ID, grams_per_serving, servings_per_day]
+scenario:
+  activity_level: Moderate
+  sport_day: "No"
+  foods:
+    - [Eggs, EGG, 50, 4]
+    - [Rice per meal, RICE_COOKED, 250, 2]
+    - [Milk, MILK_WHOLE, 250, 2]
+    - [Oats, OATS_ROLLED, 80, 1]
+    - [Peanut butter, PEANUT_BUTTER, 20, 1]
+    - [Bananas, BANANA, 120, 2]
+    - [Veg per meal, MIX_VEG, 150, 2]
+    - [Chicken, CHICKEN_BREAST, 130, 1]
+    - [Yogurt cups, GREEK_YOGURT, 140, 1]
+    - [Whey scoops, WHEY_SCOOP, 35, 1]
+
+sample:
+  days: 14            # days of demo data; 0 builds an empty template
+  end_date: 2026-03-15
+  seed: 7
+
+layout:
+  intake_rows: 400    # rows with formulas ready in DAILY_INPUT
+  day_rows: 120       # rows in the per-day logs
+  supp_log_rows: 300
